@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+$bgColor: #131722;
+$lightBgColor: rgba(30, 41, 82, 0.1);
+$bgtransparent: rgba(19, 91, 117, 0.6);
+$fontColor: #fff;
+$borderColor: #a8a8a83d;
+$borderHeight: 1px;
+$secondFontColor: #949cb0;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+body {
+  background-color: $bgColor;
+  color: $fontColor;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+
+  @media (min-width: map-get($grid-breakpoints, sm)) { font-size: 1.1rem; }
+  @media (min-width: map-get($grid-breakpoints, md)) { font-size: 1.2rem; }
+  @media (min-width: map-get($grid-breakpoints, lg)) { font-size: 1.3rem; }
+  @media (min-width: map-get($grid-breakpoints, xl)) { font-size: 1.4rem; }
+  @media (min-width: map-get($grid-breakpoints, xxl)) { font-size: 1.5rem; }
+}
+
+a, a:hover {
+  color: $fontColor !important;
+}
+
+.brdr {
+  height: $borderHeight;
+  background-color: $borderColor;
+}
+
+// Main container for sections with larger images and responsive grid layout
+.section-container {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    gap: 1.5rem;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    gap: 2rem;
+    padding: 3rem;
+  }
+}
+
+// Styling for individual cards (home, movies, TV shows, people)
+.section-card {
+  background-color: $bgtransparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .card-content {
+    padding: 1rem;
+    color: $fontColor;
+    text-align: center;
+
+    h3 {
+      font-weight: 500;
+      color: $secondFontColor;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
